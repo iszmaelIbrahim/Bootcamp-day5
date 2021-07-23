@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\ArkibController;
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('prototype.dashboard');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::resource('catalog', CatalogController::class);
 
-require __DIR__.'/auth.php';
+Route::resource('arkib', ArkibController::class);
